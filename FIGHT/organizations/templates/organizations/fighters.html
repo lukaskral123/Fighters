@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="text-center">Fighters</h2>
+<div class="row">
+    {% for fighter in fighters %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                {% if fighter.photo %}
+                    <img src="{{ fighter.photo.url }}" class="card-img-top" alt="{{ fighter.name }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ fighter.name }}</h5>
+                    <p class="card-text">Weight Class: {{ fighter.weight_class }}</p>
+                    <p class="card-text">Wins: {{ fighter.wins }} | Losses: {{ fighter.losses }}</p>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>No fighters found.</p>
+    {% endfor %}
+</div>
+{% endblock %}
